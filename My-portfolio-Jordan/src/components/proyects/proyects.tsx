@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 interface Project {
@@ -42,7 +42,13 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
     );
   };
 
-  const colors = ["bg-red-500", "bg-blue-500", "bg-green-500", "bg-yellow-500"];
+  const colors = [
+    "bg-purple-600",
+    "bg-blue-500",
+    "bg-gray-500",
+    "bg-indigo-400",
+    "bg-teal-500",
+  ];
 
   return (
     <div className="max-w-md w-full p-4 rounded-lg shadow-2xl bg-gradient-to-tr from-black-800 via-blue-950 to-purple-800 bg-200% animate-gradient-flow">

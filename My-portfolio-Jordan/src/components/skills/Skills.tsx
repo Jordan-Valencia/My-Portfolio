@@ -43,18 +43,18 @@ const SkillsSection: React.FC = () => {
   ];
 
   const skillBoxClasses =
-    "flex flex-col items-center text-white hover:scale-105 transition-transform duration-300 cursor-pointer p-4";
+    "flex flex-col items-center text-white hover:scale-125 transition-transform duration-200 cursor-pointer p-4";
 
   return (
-    <section className="flex flex-col items-center justify-center py-20 text-center w-full">
+    <section className="flex flex-col items-center justify-center text-center w-full">
       <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
         Mis Habilidades
       </h2>
       <h3 className="py-0 text-white mb-3 animate-bounce">▼</h3>
-      <article className="flex flex-wrap gap-8 justify-center mt-10 w-full px-5 max-w-screen-lg">
-        <div className="relative group w-1/3">
-          <div className="absolute -inset-1 bg-gradient-to-r rounded-xl blur-md opacity-75 group-hover:opacity-100 transition duration-500"></div>
-          <div className="relative flex flex-col items-center justify-center p-8 rounded-xl bg-gradient-to-b from-black via-purple-900 to-purple-800">
+      <article className="flex flex-wrap gap-8 justify-center mt-10 px-5 max-w-screen-2xl">
+        <div className="relative group w-1/4">
+          <div className="absolute -inset-1 bg-gradient-to-r rounded-xl blur-md"></div>
+          <div className="min-h-full relative flex flex-col items-center justify-start p-8 rounded-xl bg-gradient-to-b from-black via-purple-900 to-purple-800">
             <h3 className="text-2xl font-semibold text-white mb-5">
               Front-End
             </h3>
@@ -69,9 +69,9 @@ const SkillsSection: React.FC = () => {
           </div>
         </div>
 
-        <div className="relative group w-1/3">
-          <div className="absolute -inset-1 bg-gradient-to-r rounded-xl blur-md opacity-75 group-hover:opacity-100 transition duration-500"></div>
-          <div className="relative flex flex-col items-center justify-center p-8 rounded-xl bg-gradient-to-b from-black via-purple-900 to-purple-800">
+        <div className="relative group w-1/4">
+          <div className="absolute -inset-1 bg-gradient-to-r rounded-xl blur-md"></div>
+          <div className="relative min-h-full flex flex-col items-center justify-start p-8 rounded-xl bg-gradient-to-b from-black via-purple-900 to-purple-800">
             <h3 className="text-2xl font-semibold text-white mb-5">Back-End</h3>
             <div className="flex flex-wrap gap-3 justify-center">
               {backEndSkills.map((skill, index) => (
@@ -84,9 +84,9 @@ const SkillsSection: React.FC = () => {
           </div>
         </div>
 
-        <div className="relative group">
-          <div className="absolute -inset-1 bg-gradient-to-r  rounded-xl blur-md opacity-75 group-hover:opacity-100 transition duration-500"></div>
-          <div className="relative flex flex-col items-center justify-center p-8 rounded-xl bg-gradient-to-b from-black via-purple-900 to-purple-800">
+        <div className="relative group w-1/4">
+          <div className="absolute -inset-1 bg-gradient-to-r rounded-xl blur-md"></div>
+          <div className="min-h-full relative flex flex-col items-center justify-start p-8 rounded-xl bg-gradient-to-b from-black via-purple-900 to-purple-800">
             <h3 className="text-2xl font-semibold text-white mb-5">DevOps</h3>
             <div className="flex flex-wrap gap-3 justify-center">
               {devOpsSkills.map((skill, index) => (
