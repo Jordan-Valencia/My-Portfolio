@@ -32,18 +32,18 @@ const CopyPasteAnimation: React.FC<CopyPasteAnimationProps> = ({
     <div className="flex justify-start" style={{ height: "100px" }}>
       <div className="rounded shadow-lg text-center">
         {step === 1 && (
-          <div className="text-6xl font-bold animate-pulse text-orange-300">
+          <div className="text-3xl md:text-6xl font-bold animate-pulse text-orange-300">
             Ctrl + C
           </div>
         )}
         {step === 2 && (
-          <div className="text-6xl font-bold animate-pulse text-orange-300">
+          <div className="text-3xl md:text-6xl font-bold animate-pulse text-orange-300">
             Ctrl + V
           </div>
         )}
         {step === 3 && (
           <div className="relative flex items-center justify-center ">
-            <span className="text-transparent bg-gradient-to-r from-orange-400 via-red-500 to-orange-400 bg-clip-text animate-aurora text-6xl">
+            <span className="text-3xl md:text-6xl text-transparent bg-gradient-to-r from-orange-400 via-red-500 to-orange-400 bg-clip-text animate-aurora">
               {pastedText}
             </span>
           </div>

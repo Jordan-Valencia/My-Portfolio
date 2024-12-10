@@ -89,10 +89,14 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
     </div>
   );
 };
+interface ProjectsProps{
+  innerRef:
+  React.RefObject<HTMLDivElement>
+}
 
-const ProjectsSection: React.FC = () => {
+const ProjectsSection: React.FC<ProjectsProps> = ({innerRef}) => {
   return (
-    <section className="py-20 px-5">
+    <section ref={innerRef} className="py-20 px-5">
       <h2 className="text-3xl font-bold text-white text-center mb-10">
         Mis Proyectos
       </h2>

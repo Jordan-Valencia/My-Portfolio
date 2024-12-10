@@ -32,7 +32,7 @@ function TextIntroduction() {
 
   return (
     <div className="text-[#F8F8FF] flex h-auto justify-center items-center">
-      <div className="flex text-6xl">
+      <div className="flex text-3xl md:text-6xl">
         <p>
           {escritura}
           <span className={mostrarCursor ? "visible" : "invisible"}>|</span>

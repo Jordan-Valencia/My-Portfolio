@@ -1,12 +1,17 @@
-const AboutMe: React.FC = () => {
+interface AboutProps{
+  innerRef:
+  React.RefObject<HTMLDivElement>
+}
+
+const AboutMe: React.FC<AboutProps> = ({innerRef}) => {
   return (
-    <section className="flex flex-col items-center justify-center h-screen py-20 px-5 text-center">
+    <section ref={innerRef} className="flex flex-col items-center justify-center h-screen py-20 px-5 text-center">
       <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">
         Sobre Mí
       </h2>
       <div className="flex">
-        <div className="max-w-4xl text-white space-y-6 w-1/2">
-          <p className="text-lg leading-8">
+        <div className="max-w-4xl text-white space-y-6 w-full md:w-1/2">
+          <p className="text-xl">
             Un desarrollador enfocado en crear soluciones eficientes y
             escalables en entornos{" "}
             <span className="text-purple-400 font-semibold">front-end</span> y{" "}
@@ -34,16 +39,11 @@ const AboutMe: React.FC = () => {
             usando las mejores prácticas, garantizando un gran aporte a
             cualquier proyecto.
           </p>
-          <p className="text-lg leading-8">
-            Fuera del ámbito profesional, me motiva aprender nuevas tecnologías
-            por mi cuenta, explorar , y ayudar a mis compañeros de la
-            universidad.
-          </p>
         </div>
         <img
             src="https://i.postimg.cc/x1tR2bjP/mejor-imagen.jpg"
             alt="picture"
-            className="w-1/2 h-full"
+            className="hidden md:relative md:block relative w-1/2 "
           />
       </div>
     </section>

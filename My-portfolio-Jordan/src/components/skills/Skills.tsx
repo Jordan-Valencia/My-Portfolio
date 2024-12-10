@@ -1,4 +1,3 @@
-import React from "react";
 import { FaJs, FaReact, FaNode, FaAngular } from "react-icons/fa";
 import {
   SiTypescript,
@@ -14,7 +13,12 @@ import {
   SiCloudflare,
 } from "react-icons/si";
 
-const SkillsSection: React.FC = () => {
+interface SkillsProps{
+  innerRef:
+  React.RefObject<HTMLDivElement>
+}
+
+const SkillsSection: React.FC<SkillsProps> = ({innerRef}) => {
   const frontEndSkills = [
     { name: "JavaScript", icon: <FaJs className="text-yellow-400" /> },
     { name: "TypeScript", icon: <SiTypescript className="text-blue-600" /> },
@@ -46,13 +50,13 @@ const SkillsSection: React.FC = () => {
     "flex flex-col items-center text-white hover:scale-125 transition-transform duration-200 cursor-pointer p-4";
 
   return (
-    <section className="flex flex-col items-center justify-center text-center w-full">
-      <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
+    <section ref={innerRef} className="flex flex-col items-center justify-center text-center w-full pt-10">
+      <h2 className="text-3xl md:text-4xl font-bold text-white">
         Mis Habilidades
       </h2>
-      <h3 className="py-0 text-white mb-3 animate-bounce">▼</h3>
-      <article className="flex flex-wrap gap-8 justify-center mt-10 px-5 max-w-screen-2xl">
-        <div className="relative group w-1/4">
+      <h3 className="py-4 text-white animate-bounce">▼</h3>
+      <article className="flex flex-col gap-8 justify-center mt-10 px-5 w-full md:max-w-screen-2xl md:flex-row">
+        <div className="relative group w-full md:w-1/4">
           <div className="absolute -inset-1 bg-gradient-to-r rounded-xl blur-md"></div>
           <div className="min-h-full relative flex flex-col items-center justify-start p-8 rounded-xl bg-gradient-to-b from-black via-purple-900 to-purple-800">
             <h3 className="text-2xl font-semibold text-white mb-5">
@@ -69,7 +73,7 @@ const SkillsSection: React.FC = () => {
           </div>
         </div>
 
-        <div className="relative group w-1/4">
+        <div className="relative group w-full md:w-1/4">
           <div className="absolute -inset-1 bg-gradient-to-r rounded-xl blur-md"></div>
           <div className="relative min-h-full flex flex-col items-center justify-start p-8 rounded-xl bg-gradient-to-b from-black via-purple-900 to-purple-800">
             <h3 className="text-2xl font-semibold text-white mb-5">Back-End</h3>
@@ -84,7 +88,7 @@ const SkillsSection: React.FC = () => {
           </div>
         </div>
 
-        <div className="relative group w-1/4">
+        <div className="relative group w-full md:w-1/4">
           <div className="absolute -inset-1 bg-gradient-to-r rounded-xl blur-md"></div>
           <div className="min-h-full relative flex flex-col items-center justify-start p-8 rounded-xl bg-gradient-to-b from-black via-purple-900 to-purple-800">
             <h3 className="text-2xl font-semibold text-white mb-5">DevOps</h3>

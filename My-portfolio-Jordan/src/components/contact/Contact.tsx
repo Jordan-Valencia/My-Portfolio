@@ -1,12 +1,15 @@
 import { useState, ChangeEvent, FormEvent } from "react";
-
+import { SiGmail } from "react-icons/si";
 interface FormData {
   name: string;
   email: string;
   message: string;
 }
+interface ContactProps {
+  innerRef: React.RefObject<HTMLDivElement>;
+}
 
-const Contact: React.FC = () => {
+const Contact: React.FC<ContactProps> = ({ innerRef }) => {
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
@@ -15,28 +18,34 @@ const Contact: React.FC = () => {
 
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    // Aquí puedes manejar el envío del formulario, como enviar datos a una API o correo.
+    // Manejo de la Api de correo
     setIsSubmitted(true);
   };
 
   return (
-    <section className="py-10 px-5 text-white h-screen ">
-      <h2 className="text-3xl font-bold text-center mb-6">Contact Me</h2>
+    <section
+      ref={innerRef}
+      className="flex flex-col items-center justify-start px-5 text-white h-screen w-full md:w-3/4 md:pt-32"
+    >
+      <h2 className="text-3xl font-bold text-center pb-5">Contact Me</h2>
+
       {isSubmitted ? (
-        <p className="text-center text-green-500 text-xl">
+        <p className="text-center text-purple-500 text-xl pt-4">
           ¡Gracias por tu mensaje! Nos pondremos en contacto pronto.
         </p>
       ) : (
         <form
           onSubmit={handleSubmit}
-          className="max-w-4xl mx-auto flex flex-col space-y-4"
+          className="w-full md:w-1/2 flex flex-col space-y-5 pt-4"
         >
           <input
             type="text"
@@ -67,9 +76,9 @@ const Contact: React.FC = () => {
           ></textarea>
           <button
             type="submit"
-            className="w-full py-3 rounded-lg bg-purple-600 hover:bg-purple-700 transition-all font-bold text-white"
+            className="flex gap-3 justify-center items-center w-full py-3 rounded-lg bg-purple-600 hover:bg-purple-700 transition-all font-bold text-white"
           >
-            Enviar
+            Enviar <SiGmail></SiGmail>
           </button>
         </form>
       )}
