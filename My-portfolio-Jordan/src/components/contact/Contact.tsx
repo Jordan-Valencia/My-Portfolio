@@ -36,7 +36,7 @@ const Contact: React.FC<ContactProps> = ({ innerRef }) => {
       ref={innerRef}
       className="flex flex-col items-center justify-start px-5 text-white h-screen w-full md:w-3/4 md:pt-32"
     >
-      <h2 className="text-3xl font-bold text-center pb-5">Contact Me</h2>
+      <h2 className="text-3xl font-bold text-center pb-5">Contactame</h2>
 
       {isSubmitted ? (
         <p className="text-center text-purple-500 text-xl pt-4">
@@ -85,5 +85,4 @@ const Contact: React.FC<ContactProps> = ({ innerRef }) => {
     </section>
   );
 };
-
 export default Contact;

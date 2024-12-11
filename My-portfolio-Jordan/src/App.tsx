@@ -15,7 +15,7 @@ function App() {
   const section5Ref = useRef<HTMLDivElement>(null);
 
   const scrollToSection = (ref: React.RefObject<HTMLDivElement>) => {
-    ref.current?.scrollIntoView({ behavior: "smooth"});
+    ref.current?.scrollIntoView({ behavior: "smooth" });
   };
   return (
     <div className="overflow-hidden">
@@ -42,17 +42,14 @@ function App() {
       ></NavBar>
       <div className="flex flex-col justify-center items-center bg-gradient-to-br from-black to-purple-950 w-screen">
         <section
-          className="flex h-screen flex-col md:flex-row justify-start items-center w-full md:w-3/4 max-w-5xl -mb-36"
+          className="flex h-screen flex-col md:flex-row justify-start items-center w-full md:w-3/4 max-w-7xl -mb-36"
           ref={section1Ref}
         >
-          <ImageContainerIntroduction>
-            <img
-              src="https://i.postimg.cc/x1tR2bjP/mejor-imagen.jpg"
-              alt="picture"
-              className="rounded-full w-80 h-96 border-4 border-white shadow-lg"
-            />
-          </ImageContainerIntroduction>
-          <section className="flex flex-col justify-start md:justify-center items-center h-full w-full">
+          <ImageContainerIntroduction
+            imageUrl="https://i.postimg.cc/x1tR2bjP/mejor-imagen.jpg"
+            alt="Descripción de la imagen"
+          ></ImageContainerIntroduction>
+          <section className="flex flex-col justify-start md:justify-center items-center md:items-start h-full w-full">
             <Introduction></Introduction>
             <CopyPasteAnimation
               textToCopy="desarrollador Full-stack"
