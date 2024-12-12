@@ -16,6 +16,19 @@ interface NavbarProps {
   ) => void;
 }
 
+const handleDownloadCV = () => {
+  const cvFileName = "JordanValencia.pdf";
+  const fileUrl = `/${cvFileName}`;
+
+  const link = document.createElement("a");
+  link.href = fileUrl;
+  link.setAttribute("download", cvFileName);
+  document.body.appendChild(link);
+
+  link.click();
+
+  document.body.removeChild(link);
+};
 const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -71,8 +84,8 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
             {item.label}
           </p>
         ))}
-        <p className="px-3 py-2 mx-1 cursor-pointer text-orange-400 border-orange-400 border rounded-md flex items-center">
-          <FaFileAlt className="mr-2" />
+        <p className="px-3 py-2 mx-1 cursor-pointer text-orange-400 border-orange-400 border rounded-md flex items-center " onClick={handleDownloadCV}>
+          <FaFileAlt className="mr-2"/>
           CV
         </p>
       </div>
@@ -110,7 +123,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
                 {item.label}
               </div>
             ))}
-            <div className="text-xl text-orange-400 py-3 cursor-pointer flex items-center hover:bg-gray-800 rounded-md px-4 border-orange-400 border">
+            <div className="text-xl text-orange-400 py-3 cursor-pointer flex items-center hover:bg-gray-800 rounded-md px-4 border-orange-400 border" onClick={handleDownloadCV}>
               <FaFileAlt className="mr-2" />
               CV
             </div>
