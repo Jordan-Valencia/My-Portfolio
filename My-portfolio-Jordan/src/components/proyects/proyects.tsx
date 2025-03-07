@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 interface Project {
@@ -29,17 +29,37 @@ const projects: Project[] = [
 
 const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isFading, setIsFading] = useState(false);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const handleNextImage = () => {
-    setCurrentImageIndex((prevIndex) =>
-      prevIndex === project.images.length - 1 ? 0 : prevIndex + 1
-    );
-  };
+  // Precarga de imágenes
+  useEffect(() => {
+    project.images.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+  }, [project.images]);
 
-  const handlePreviousImage = () => {
-    setCurrentImageIndex((prevIndex) =>
-      prevIndex === 0 ? project.images.length - 1 : prevIndex - 1
-    );
+  // Limpieza del timeout al desmontar el componente
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
+  }, []);
+
+  const changeImage = (direction: "next" | "prev") => {
+    setIsFading(true);
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    timeoutRef.current = setTimeout(() => {
+      setCurrentImageIndex((prevIndex) => {
+        if (direction === "next") {
+          return prevIndex === project.images.length - 1 ? 0 : prevIndex + 1;
+        } else {
+          return prevIndex === 0 ? project.images.length - 1 : prevIndex - 1;
+        }
+      });
+      setIsFading(false);
+    }, 300); // Duración de la animación en milisegundos
   };
 
   const colors = [
@@ -51,21 +71,23 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
   ];
 
   return (
-    <div className="max-w-md w-full p-4 rounded-lg shadow-2xl bg-gradient-to-tr from-black-800 via-blue-950 to-purple-800 bg-200% animate-gradient-flow">
+    <div className="max-w-md w-full p-4 rounded-lg shadow-2xl bg-gradient-to-tr  to-purple-600">
       <div className="relative w-full h-48 bg-gray-200 rounded-md overflow-hidden">
         <img
           src={project.images[currentImageIndex]}
           alt={project.title}
-          className="object-contain w-full h-full max-w-full max-h-full transition-opacity duration-500 ease-in-out"
+          className={`object-contain w-full h-full transition-opacity duration-300 ease-in-out ${
+            isFading ? "opacity-0" : "opacity-100"
+          }`}
         />
         <button
-          onClick={handlePreviousImage}
+          onClick={() => changeImage("prev")}
           className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-70 text-white p-3 rounded-full hover:bg-purple-600 transition-all shadow-lg"
         >
           <FaChevronLeft size={16} />
         </button>
         <button
-          onClick={handleNextImage}
+          onClick={() => changeImage("next")}
           className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-70 text-white p-3 rounded-full hover:bg-purple-600 transition-all shadow-lg"
         >
           <FaChevronRight size={16} />
@@ -77,10 +99,8 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
       <section className="flex flex-wrap justify-center text-sm text-white mt-4">
         {project.skills.map((skill, index) => (
           <article
-            className={`p-2 ${
-              colors[index % colors.length]
-            } text-white rounded-full shadow-md m-1 text-center`}
             key={index}
+            className={`p-2 ${colors[index % colors.length]} text-white rounded-full shadow-md m-1 text-center`}
           >
             {skill}
           </article>
@@ -89,12 +109,12 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
     </div>
   );
 };
-interface ProjectsProps{
-  innerRef:
-  React.RefObject<HTMLDivElement>
+
+interface ProjectsProps {
+  innerRef: React.RefObject<HTMLDivElement>;
 }
 
-const ProjectsSection: React.FC<ProjectsProps> = ({innerRef}) => {
+const ProjectsSection: React.FC<ProjectsProps> = ({ innerRef }) => {
   return (
     <section ref={innerRef} className="py-20 px-5">
       <h2 className="text-3xl font-bold text-white text-center mb-10">

@@ -50,19 +50,19 @@ const CopyPasteAnimation = memo<CopyPasteAnimationProps>(({
       case 1:
         return (
           <div className="text-3xl md:text-6xl font-bold animate-pulse text-orange-300">
-            Ctrl + C
+            Front-end
           </div>
         );
       case 2:
         return (
           <div className="text-3xl md:text-6xl font-bold animate-pulse text-orange-300">
-            Ctrl + V
+            Back-end
           </div>
         );
       case 3:
         return (
           <div className="relative flex items-center justify-center">
-            <span className="text-3xl md:text-6xl text-transparent bg-gradient-to-r from-orange-400 via-red-500 to-orange-400 bg-clip-text animate-aurora">
+            <span className="text-3xl md:text-6xl text-transparent bg-gradient-to-r from-orange-600 via-red-600 to-orange-600 bg-clip-text animate-aurora">
               {animationState.pastedText}
             </span>
           </div>
