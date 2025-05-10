@@ -1,39 +1,71 @@
 /** @type {import('tailwindcss').Config} */
-export default {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+module.exports = {
+  darkMode: ["class"],
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+    "*.{js,ts,jsx,tsx,mdx}",
+    "app/**/*.{ts,tsx}",
+    "components/**/*.{ts,tsx}",
+  ],
   theme: {
     extend: {
       colors: {
-        "scroll-track": "#2d2d2d",
-        "scroll-thumb": "#6a5acd",
-        "scroll-thumb-hover": "#483d8b",
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
+        },
+        secondary: {
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
+        primary: {
+          DEFAULT: "#9333ea", // Purple
+          foreground: "#ffffff",
+        },
+        secondary: {
+          DEFAULT: "#3b82f6", // Blue
+          foreground: "#ffffff",
+        },
+      },
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
       },
       animation: {
-        aurora: "aurora 3s infinite",
-        border: "border-gradient 2s infinite linear",
-        "gradient-flow": "gradient-flow 6s ease infinite",
+        "spin-slow": "spin 8s linear infinite",
+        "bounce-slow": "bounce 3s infinite",
       },
-      keyframes: {
-        aurora: {
-          "0%": { opacity: "0.8" },
-          "50%": { opacity: "1" },
-          "100%": { opacity: "0.8" },
-        },
-        "border-gradient": {
-          "0%": { "background-position": "0% 50%" },
-          "50%": { "background-position": "100% 50%" },
-          "100%": { "background-position": "0% 50%" },
-        },
-        "gradient-flow": {
-          "0%": { "background-position": "0% 50%" },
-          "50%": { "background-position": "100% 50%" },
-          "100%": { "background-position": "0% 50%" },
-        },
-      },
-      backgroundSize: {
-        "200%": "200% 200%",
+      backgroundImage: {
+        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
       },
     },
   },
-  plugins: [],
-};
+  plugins: [require("tailwindcss-animate")],
+}
