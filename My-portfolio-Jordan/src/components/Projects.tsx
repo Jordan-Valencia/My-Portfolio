@@ -2,7 +2,7 @@
 
 import { useRef, useState, useEffect } from "react"
 import { motion, useInView } from "framer-motion"
-import { FiExternalLink, FiGithub } from "react-icons/fi"
+import { FiExternalLink } from "react-icons/fi"
 
 interface ProjectsProps {
   darkMode: boolean
@@ -14,36 +14,13 @@ const Projects = ({ darkMode }: ProjectsProps) => {
   const [filteredSkill, setFilteredSkill] = useState<string | null>(null)
   const [projects, setProjects] = useState([
     {
-      title: "Proyecto 1",
+      title: "Ruta-Sport.com",
       description:
-        "Descripción del proyecto 1. Puedes editar este texto para describir uno de tus proyectos destacados.",
-      image: "/placeholder.svg?height=400&width=600",
-      tags: ["React", "TypeScript", "Tailwind CSS"],
+        "Plataforma web de tenis desarrollada con Angular, Node.js y PostgreSQL, desplegada con Cloudflare.",
+      image: "/images/ruta-sport.png",
+      tags: ["Cloudflare", "Angular", "Git", "Node.js", "PostgreSQL"],
       links: {
-        demo: "#",
-        github: "#",
-      },
-    },
-    {
-      title: "Proyecto 2",
-      description:
-        "Descripción del proyecto 2. Puedes editar este texto para describir uno de tus proyectos destacados.",
-      image: "/placeholder.svg?height=400&width=600",
-      tags: ["Angular", "Node.js", "PostgreSQL"],
-      links: {
-        demo: "#",
-        github: "#",
-      },
-    },
-    {
-      title: "Proyecto 3",
-      description:
-        "Descripción del proyecto 3. Puedes editar este texto para describir uno de tus proyectos destacados.",
-      image: "/placeholder.svg?height=400&width=600",
-      tags: ["Django", "React", "AWS"],
-      links: {
-        demo: "#",
-        github: "#",
+        demo: "https://ruta-sport.com",
       },
     },
   ])
@@ -123,18 +100,19 @@ const Projects = ({ darkMode }: ProjectsProps) => {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="flex justify-center"
         >
           {visibleProjects.map((project, index) => (
-            <ProjectCard
-              key={index}
-              project={project}
-              variants={itemVariants}
-              darkMode={darkMode}
-              isHighlighted={
-                filteredSkill !== null && project.tags.some((tag) => tag.toLowerCase() === filteredSkill?.toLowerCase())
-              }
-            />
+            <div className="w-full max-w-md" key={index}>
+              <ProjectCard
+                project={project}
+                variants={itemVariants}
+                darkMode={darkMode}
+                isHighlighted={
+                  filteredSkill !== null && project.tags.some((tag) => tag.toLowerCase() === filteredSkill?.toLowerCase())
+                }
+              />
+            </div>
           ))}
         </motion.div>
       </div>
@@ -150,7 +128,6 @@ interface ProjectCardProps {
     tags: string[]
     links: {
       demo: string
-      github: string
     }
   }
   variants: any
@@ -174,7 +151,7 @@ const ProjectCard = ({ project, variants, darkMode, isHighlighted = false }: Pro
           className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-          <div className="p-4 w-full flex justify-between">
+          <div className="p-4 w-full flex justify-center">
             <a
               href={project.links.demo}
               target="_blank"
@@ -182,14 +159,6 @@ const ProjectCard = ({ project, variants, darkMode, isHighlighted = false }: Pro
               className="p-2 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/40 transition-colors"
             >
               <FiExternalLink size={18} />
-            </a>
-            <a
-              href={project.links.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/40 transition-colors"
-            >
-              <FiGithub size={18} />
             </a>
           </div>
         </div>

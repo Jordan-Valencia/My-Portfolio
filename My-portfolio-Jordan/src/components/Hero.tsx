@@ -53,7 +53,7 @@ const Hero = ({ darkMode }: HeroProps) => {
               <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                href="/files/cv-jordan-valencia.pdf"
+                href="/files/Jordan-ValenciaCV.pdf"
                 download
                 className={`px-6 py-3 rounded-lg font-medium flex items-center gap-2 border ${
                   darkMode ? "border-gray-700 hover:border-gray-500" : "border-gray-300 hover:border-gray-400"

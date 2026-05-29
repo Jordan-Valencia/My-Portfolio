@@ -5,7 +5,6 @@ import type React from "react"
 import { useRef } from "react"
 import { motion, useInView } from "framer-motion"
 import {
-  DiJavascript1,
   DiReact,
   DiAngularSimple,
   DiNodejsSmall,
@@ -13,9 +12,9 @@ import {
   DiMysql,
   DiPostgresql,
   DiGit,
+  DiAws,
 } from "react-icons/di"
 import {
-  SiTypescript,
   SiTailwindcss,
   SiBootstrap,
   SiExpress,
@@ -23,7 +22,6 @@ import {
   SiDjango,
   SiAstro,
   SiCloudflare,
-  SiAmazonwebservices,
 } from "react-icons/si"
 
 interface SkillsProps {
@@ -35,8 +33,6 @@ const Skills = ({ darkMode }: SkillsProps) => {
   const isInView = useInView(ref, { once: false, amount: 0.2 })
 
   const frontEndSkills = [
-    { name: "JavaScript", icon: <DiJavascript1 className="text-yellow-400 text-3xl" /> },
-    { name: "TypeScript", icon: <SiTypescript className="text-blue-600" /> },
     { name: "React", icon: <DiReact className="text-sky-500 text-3xl" /> },
     { name: "Angular", icon: <DiAngularSimple className="text-red-500 text-3xl" /> },
     { name: "Tailwind CSS", icon: <SiTailwindcss className="text-teal-400" /> },
@@ -57,7 +53,7 @@ const Skills = ({ darkMode }: SkillsProps) => {
   const devOpsSkills = [
     { name: "Git", icon: <DiGit className="text-orange-600 text-3xl" /> },
     { name: "Docker", icon: <DiDocker className="text-blue-600 text-3xl" /> },
-    { name: "AWS", icon: <SiAmazonwebservices className="text-yellow-500" /> },
+    { name: "AWS", icon: <DiAws className="text-yellow-500 text-3xl" /> },
     { name: "Cloudflare", icon: <SiCloudflare className="text-orange-500" /> },
   ]
 
